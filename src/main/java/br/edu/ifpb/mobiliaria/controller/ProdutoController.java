@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*",maxAge = 3600)
 @RequestMapping("/produto")
 public class ProdutoController {
     @Autowired
@@ -24,5 +25,15 @@ public class ProdutoController {
     @PostMapping
     public void saveProduto(@RequestBody Produto newProduto){
         produtoService.saveProduto(newProduto);
+    }
+
+    @PutMapping
+    public void updateProduto(@RequestBody Produto produtoParaAtualizar){
+        produtoService.updateProduto(produtoParaAtualizar);
+    }
+
+    @DeleteMapping
+    public void deletarProduto(@RequestBody Produto produtoParaDeletar){
+        produtoService.deletarProduto(produtoParaDeletar);
     }
 }
